@@ -19,7 +19,7 @@ function Post() {
         <div className="post_header">
           <div className="post_headerText">
             <h3>
-              header
+              username
               <span className="post_headerSpecial">
                 <VerifiedUser className="post_badge" />
                 @user
