@@ -1,0 +1,38 @@
+.widgets {
+    flex: 0.35;
+}
+
+.widgets_input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--twitter-background);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.widgets_input > input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+.widgets_searchIcon {
+    color: gray;
+}
+
+.widgets_widgetContainer {
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 20px;
+    padding-top: 5px;
+    background-color: #f5f8fa;
+    border-radius: 20px;
+}
+
+.widgets_widgetContainer > h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
