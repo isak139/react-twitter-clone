@@ -9,28 +9,28 @@ import { ChatBubbleOutline } from "@mui/icons-material";
 import React from "react";
 import "./Post.css";
 
-function Post() {
+function Post({ displayName, username, verified, text, image, avatar }) {
   return (
     <div className="post">
       <div className="post_avatar">
-        <Avatar />
+        <Avatar src={avatar} />
       </div>
       <div className="post_body">
         <div className="post_header">
           <div className="post_headerText">
             <h3>
-              username
+              {displayName}
               <span className="post_headerSpecial">
-                <VerifiedUser className="post_badge" />
-                @user
+                {verified ? <VerifiedUser className="post_badge" /> : ""}@
+                {username}
               </span>
             </h3>
           </div>
           <div className="post_headerDescription">
-            <p>texttext</p>
+            <p>{text}</p>
           </div>
         </div>
-        <img src="https://source.unsplash.com/random" alt="" />
+        <img src={image} alt="" />
         <div className="post_footer">
           <ChatBubbleOutline fontSize="small" />
           <Repeat fontSize="small" />
