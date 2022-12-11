@@ -2,10 +2,10 @@ import React from "react";
 import Post from "./Post";
 import "./Timeline.css";
 import TweetBox from "./TweetBox";
-import db from "../../firebase";
+import { db } from "../../firebase";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
-function Timeline() {
+function Timeline({ isAuth }) {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ function Timeline() {
       <div className="timeline_header">
         <h2>ホーム</h2>
       </div>
-      <TweetBox />
+      <TweetBox isAuth={isAuth} />
       {posts.map((post) => (
         <Post
           key={post.text /* UUIDなどに変更すべき */}
