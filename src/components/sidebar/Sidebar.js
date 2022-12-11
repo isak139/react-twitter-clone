@@ -9,24 +9,71 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import GoogleIcon from "@mui/icons-material/Google";
 import { Button } from "@mui/material";
 import "./Sidebar.css";
+import Profile from "./Profile";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { auth, provider } from "../../firebase";
 
-function Sidebar() {
+function Sidebar({ isAuth, setIsAuth }) {
+  const loginWithGoogle = () => {
+    //Googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      console.log(isAuth);
+      //navigate("/");
+    });
+  };
+  const logout = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      //navigate("/login");
+    });
+  };
   return (
     <div className="sidebar">
       <TwitterIcon className="sidebar_twitterIcon" />
       <SidebarOption text="ホーム" Icon={HomeIcon} active />
       <SidebarOption text="話題を検索" Icon={SearchIcon} />
       <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
-      <SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
+      {/* <SidebarOption text="メッセージ" Icon={MailOutlineIcon} /> */}
       <SidebarOption text="ブックマーク" Icon={BookmarkBorderIcon} />
-      <SidebarOption text="リスト" Icon={ListAltIcon} />
+      {/* <SidebarOption text="リスト" Icon={ListAltIcon} /> */}
       <SidebarOption text="プロフィール" Icon={PermIdentityIcon} />
-      <SidebarOption text="もっと見る" Icon={MoreHorizIcon} />
-      <Button variant="outlined" className="sidebar_tweet" fullWidth>
+      {/* <SidebarOption text="もっと見る" Icon={MoreHorizIcon} /> */}
+      <Button variant="outlined" className="sidebar_tweet">
         ツイートする
       </Button>
+      <div className="sidebar_bottom">
+        {isAuth ? (
+          <>
+            <Profile
+              displayName={auth.currentUser.displayName}
+              userName={auth.currentUser.displayName}
+              userIcon={auth.currentUser.photoURL}
+            />
+            <Button
+              variant="outlined"
+              className="sidebar_login"
+              onClick={logout}
+            >
+              ログアウト
+            </Button>
+          </>
+        ) : (
+          <Button
+            variant="outlined"
+            className="sidebar_login"
+            onClick={loginWithGoogle}
+          >
+            <GoogleIcon />
+            ログイン
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
