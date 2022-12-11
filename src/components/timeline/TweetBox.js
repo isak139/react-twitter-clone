@@ -3,9 +3,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import "./TweetBox.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import db from "../../firebase";
+import { db, auth } from "../../firebase";
 
-function TweetBox() {
+function TweetBox({ isAuth }) {
   const [tweetMessage, setTweetMessage] = React.useState("");
   const [tweetImage, setTweetImage] = React.useState("");
 
@@ -13,11 +13,11 @@ function TweetBox() {
     //リロードしないようにする
     e.preventDefault();
     addDoc(collection(db, "posts"), {
-      displayName: "displayName",
-      username: "username",
+      displayName: auth.currentUser.displayName,
+      username: auth.currentUser.displayName,
       verified: false,
       text: tweetMessage,
-      avatar: "https://i.imgur.com/4poldXr.png",
+      avatar: auth.currentUser.photoURL,
       image: tweetImage,
       timestamp: serverTimestamp(),
     });
@@ -30,7 +30,7 @@ function TweetBox() {
     <div className="tweetBox">
       <form>
         <div className="tweetBox_input">
-          <Avatar />
+          <Avatar src={isAuth ? auth.currentUser.photoURL : null} />
           <input
             value={tweetMessage}
             placeholder="いまどうしてる？"
