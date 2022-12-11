@@ -3,9 +3,9 @@ import {
   Publish,
   Repeat,
   VerifiedUser,
+  ChatBubbleOutline,
 } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import { ChatBubbleOutline } from "@mui/icons-material";
 import React from "react";
 import "./Post.css";
 
