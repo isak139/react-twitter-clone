@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SidebarOption from "./SidebarOption";
 import HomeIcon from "@mui/icons-material/Home";
@@ -15,22 +15,19 @@ import "./Sidebar.css";
 import Profile from "./Profile";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "../../firebase";
+import { AuthContext } from "../../AuthContext";
 
-function Sidebar({ isAuth, setIsAuth }) {
+function Sidebar(/* { isAuth, setIsAuth } */) {
+  const { currentUser } = useContext(AuthContext);
   const loginWithGoogle = () => {
     //Googleでログイン
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);
-      console.log(isAuth);
-      //navigate("/");
     });
   };
   const logout = () => {
     signOut(auth).then(() => {
       localStorage.clear();
-      setIsAuth(false);
-      //navigate("/login");
     });
   };
   return (
@@ -48,13 +45,9 @@ function Sidebar({ isAuth, setIsAuth }) {
         ツイートする
       </Button>
       <div className="sidebar_bottom">
-        {isAuth ? (
+        {currentUser ? (
           <>
-            <Profile
-              displayName={auth.currentUser.displayName}
-              userName={auth.currentUser.displayName}
-              userIcon={auth.currentUser.photoURL}
-            />
+            <Profile />
             <Button
               variant="outlined"
               className="sidebar_login"
