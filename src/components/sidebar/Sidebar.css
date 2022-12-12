@@ -31,10 +31,9 @@
 .sidebar_bottom {
     position: absolute;
     bottom: 0;
-    width: 100%;
     align-items: center;
     padding: 10px;
-    width: 90%;
+    width: 80%;
 }
 
 .sidebar_login {
@@ -44,7 +43,7 @@
     border : none !important;
     border-radius: 30px !important;
     height: 50px !important;
-    width: 90% !important;
+    width: 100% !important;
 }
 
 .sidebar_login svg {
