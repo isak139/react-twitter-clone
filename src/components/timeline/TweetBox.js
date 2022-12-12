@@ -1,13 +1,15 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import { useState, useContext } from "react";
 import { Button } from "@mui/material";
 import "./TweetBox.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../../firebase";
+import { AuthContext } from "../../AuthContext";
 
-function TweetBox({ isAuth }) {
-  const [tweetMessage, setTweetMessage] = React.useState("");
-  const [tweetImage, setTweetImage] = React.useState("");
+function TweetBox() {
+  const { currentUser } = useContext(AuthContext);
+  const [tweetMessage, setTweetMessage] = useState("");
+  const [tweetImage, setTweetImage] = useState("");
 
   const sendTweet = (e) => {
     //リロードしないようにする
@@ -30,7 +32,7 @@ function TweetBox({ isAuth }) {
     <div className="tweetBox">
       <form>
         <div className="tweetBox_input">
-          <Avatar src={isAuth ? auth.currentUser.photoURL : null} />
+          <Avatar src={currentUser ? currentUser.photoURL : null} />
           <input
             value={tweetMessage}
             placeholder="いまどうしてる？"
