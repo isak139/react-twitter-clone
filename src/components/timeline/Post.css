@@ -30,9 +30,28 @@ p {
     font-size: 15px;
 }
 
+.post_headerText {
+    display: flex;
+    justify-content: space-between;
+}
+
 .post_headerText > h3{
     font-size: 15px;
     margin-bottom: 5px;
+}
+
+.post_closeIcon > svg {
+    padding: 3px;
+    margin-top: 10px;
+    margin-right: 10px;
+    transition: color 0.1s ease-out;
+}
+
+.post_closeIcon > svg:hover{
+    cursor: pointer;
+    background-color: #e8f5fe;
+    border-radius: 30px;
+    color: var(--twitter-color);
 }
 
 .post_badge {
