@@ -29,11 +29,8 @@
 }
 
 .sidebar_bottom {
-    position: absolute;
-    bottom: 0;
-    align-items: center;
-    padding: 10px;
-    width: 80%;
+    margin-top: auto;
+    margin-bottom: 15px;
 }
 
 .sidebar_login {
@@ -43,7 +40,8 @@
     border : none !important;
     border-radius: 30px !important;
     height: 50px !important;
-    width: 100% !important;
+    margin-top: 20px !important;
+    width: 90% !important;
 }
 
 .sidebar_login svg {
