@@ -15,12 +15,11 @@ function TweetBox() {
     //リロードしないようにする
     e.preventDefault();
     addDoc(collection(db, "posts"), {
-      displayName: auth.currentUser.displayName,
-      username: auth.currentUser.displayName,
-      verified: false,
+      displayName: currentUser.displayName,
       text: tweetMessage,
-      avatar: auth.currentUser.photoURL,
+      avatar: currentUser.photoURL,
       image: tweetImage,
+      uid: currentUser.uid,
       timestamp: serverTimestamp(),
     });
 
