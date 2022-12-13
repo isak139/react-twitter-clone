@@ -34,13 +34,13 @@ function Sidebar(/* { isAuth, setIsAuth } */) {
     <div className="sidebar">
       <TwitterIcon className="sidebar_twitterIcon" />
       <SidebarOption text="ホーム" Icon={HomeIcon} active />
-      {/* <SidebarOption text="話題を検索" Icon={SearchIcon} /> */}
+      <SidebarOption text="話題を検索" Icon={SearchIcon} />
       <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
-      {/* <SidebarOption text="メッセージ" Icon={MailOutlineIcon} /> */}
+      <SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
       <SidebarOption text="ブックマーク" Icon={BookmarkBorderIcon} />
-      {/* <SidebarOption text="リスト" Icon={ListAltIcon} /> */}
+      <SidebarOption text="リスト" Icon={ListAltIcon} />
       <SidebarOption text="プロフィール" Icon={PermIdentityIcon} />
-      {/* <SidebarOption text="もっと見る" Icon={MoreHorizIcon} /> */}
+      <SidebarOption text="もっと見る" Icon={MoreHorizIcon} />
       <Button variant="outlined" className="sidebar_tweet">
         ツイートする
       </Button>
