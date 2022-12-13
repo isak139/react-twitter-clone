@@ -12,7 +12,9 @@ function Timeline() {
     const postData = collection(db, "posts");
     const q = query(postData, orderBy("timestamp", "desc"));
     onSnapshot(q, (querySnapshot) => {
-      setPosts(querySnapshot.docs.map((doc) => doc.data()));
+      setPosts(
+        querySnapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }))
+      );
     });
   }, []);
 
@@ -23,15 +25,7 @@ function Timeline() {
       </div>
       <TweetBox />
       {posts.map((post) => (
-        <Post
-          key={post.text /* UUIDなどに変更すべき */}
-          displayName={post.displayName}
-          username={post.username}
-          verified={post.verified}
-          text={post.text}
-          avatar={post.avatar}
-          image={post.image}
-        />
+        <Post key={post.text} post={post} />
       ))}
     </div>
   );
