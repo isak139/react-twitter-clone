@@ -3,8 +3,9 @@ import { useState, useContext } from "react";
 import { Button } from "@mui/material";
 import "./TweetBox.css";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db, auth } from "../../firebase";
+import { db, auth, provider } from "../../firebase";
 import { AuthContext } from "../../AuthContext";
+import { signInWithPopup } from "firebase/auth";
 
 function TweetBox() {
   const { currentUser } = useContext(AuthContext);
@@ -22,9 +23,15 @@ function TweetBox() {
       uid: currentUser.uid,
       timestamp: serverTimestamp(),
     });
-
     setTweetMessage("");
     setTweetImage("");
+  };
+
+  const loginWithGoogle = () => {
+    //Googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+    });
   };
 
   return (
@@ -46,13 +53,19 @@ function TweetBox() {
           type="text"
           onChange={(e) => setTweetImage(e.target.value)}
         ></input>
-        <Button
-          className="tweetBox_tweetButton"
-          type="submit"
-          onClick={sendTweet}
-        >
-          ツイートする
-        </Button>
+        {currentUser ? (
+          <Button
+            className="tweetBox_tweetButton"
+            type="submit"
+            onClick={sendTweet}
+          >
+            ツイートする
+          </Button>
+        ) : (
+          <Button className="tweetBox_tweetButton" onClick={loginWithGoogle}>
+            ログイン
+          </Button>
+        )}
       </form>
     </div>
   );
