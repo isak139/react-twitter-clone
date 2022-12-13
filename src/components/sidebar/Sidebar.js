@@ -10,7 +10,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import GoogleIcon from "@mui/icons-material/Google";
-import { Button } from "@mui/material";
+import { Button, Avatar } from "@mui/material";
 import "./Sidebar.css";
 import Profile from "./Profile";
 import { signInWithPopup, signOut } from "firebase/auth";
@@ -34,7 +34,7 @@ function Sidebar(/* { isAuth, setIsAuth } */) {
     <div className="sidebar">
       <TwitterIcon className="sidebar_twitterIcon" />
       <SidebarOption text="ホーム" Icon={HomeIcon} active />
-      <SidebarOption text="話題を検索" Icon={SearchIcon} />
+      {/* <SidebarOption text="話題を検索" Icon={SearchIcon} /> */}
       <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
       {/* <SidebarOption text="メッセージ" Icon={MailOutlineIcon} /> */}
       <SidebarOption text="ブックマーク" Icon={BookmarkBorderIcon} />
