@@ -1,21 +1,17 @@
 .Profile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 0px 10px; 
-    height: 50px;
-    width: 92%;
+    height: 50px !important;
+    width: 90% !important;
+    border-radius: 30px !important;
+    justify-content: flex-start !important;
 }
 
-.Profile_body {
-    display: flex;
-    flex-direction: column;
+.Profile > h3 {
+    color: black;
     margin-left: 10px;
 }
 
 .Profile:hover {
-    background-color: #f5f8fa;
-    cursor: pointer;
-    border-radius: 30px;
+    background-color: #f5f8fa !important;
+    cursor: pointer !important;
+    border-radius: 30px !important;
 }
