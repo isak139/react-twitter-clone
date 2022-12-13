@@ -3,7 +3,9 @@
     align-items: center;
     cursor: pointer;
     transition: color 0.1s ease-out;
-    margin-left: 20px;
+    margin-bottom: 5px;
+    height: 50px;
+    width: 90%;
 }
 
 .sidebarOption:hover {
@@ -13,7 +15,8 @@
 }
 
 .sidebarOption > .MuiSvgIcon-root {
-    padding-right: 10px;;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .sidebarOptioin > h2 {
